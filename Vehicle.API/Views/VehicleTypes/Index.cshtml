@@ -38,7 +38,7 @@
                                 </td>
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning">Editar</a>
-                                    <button data-id="@item.Id" class="btn btn-outline-danger deleteItem" data-toggle="modal" data-target="#deleteDialog" >Borrar</button>
+                                    <button data-id="@item.Id" class="btn btn-outline-danger deleteItem" data-toggle="modal" data-target="#deleteDialog">Borrar</button>
                                 </td>
                             </tr>
                         }
@@ -52,24 +52,26 @@
 <partial name="_DeleteDialog" />
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="/js/deleteDialog.js"></script>
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="/js/deleteDialog.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#MyTable').DataTable({
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-                },
-                "aLengthMenu": [
-                    [25, 50, 100, 200, -1],
-                    [25, 50, 100, 200, "Todos"]
-                ]
-            });
-
-              // Delete item
-            sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/VehicleTypes/Delete/', false);
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#MyTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            },
+            "aLengthMenu": [
+                [15, 30, 45, 60, -1],
+                [15, 30, 45, 60, "Todos"]
+            ]
         });
-    </script>
+
+          // Delete item
+        sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/VehicleTypes/Delete/', false);
+    });
+</script>
 }
